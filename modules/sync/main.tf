@@ -1,5 +1,5 @@
 resource "doppler_integration_aws_secrets_manager" "this" {
-  name            = join("-", [var.project, var.environment, var.service, "asm"])
+  name            = local.integration
   assume_role_arn = var.iam_role_arn
 }
 
@@ -9,7 +9,7 @@ resource "doppler_secrets_sync_aws_secrets_manager" "this" {
   config      = coalesce(var.environment_slug, local.environments[var.environment])
 
   region               = data.aws_region.current.name
-  path                 = join("/", [var.project, var.environment, var.service])
+  path                 = local.path
   delete_behavior      = "leave_in_target"
   path_behavior        = "none"
   sync_strategy        = "multi-secret"
