@@ -2,32 +2,21 @@
 
 [![Main Checks][badge-checks]][code-checks] [![GitHub Release][badge-release]][latest-release]
 
-Use this template repository to create new OpenTofu modules. Follow the steps
-below to use this repository:
-
-1. Click the "Use this template" button to create a new repository
-1. Name your new repository using the format `todu-modules-<provider>-<module>`
-1. Add the files necessary to support your module to the root of your new
-   repository
-1. Update the `README.md` file with the appropriate information for your module.
-   Make sure you update any references to this template repository with your new
-   repository
-1. Update the [codeforamerica/tofu-modules][tofu-modules] repository to include
-   your new module in the main `README.md` and the documentation
+This module creates and manages the permissions and configuration necessary to
+sync secrets between Doppler and[AWS Secrets Manager][secrets-manager].
 
 ## Usage
 
 Add this module to your `main.tf` (or appropriate) file and configure the inputs
 to match your desired configuration. For example:
 
-[//]: # (TODO: Update to match your module's name and inputs)
-
 ```hcl
-module "module_name" {
-  source = "github.com/codeforamerica/tofu-modules-template?ref=1.0.0"
+module "doppler" {
+  source = "github.com/codeforamerica/tofu-modules-aws-doppler?ref=1.0.0"
 
   project = "my-project"
   environment = "development"
+  kms_key_arns = [module.secrets.kms_key_arn]
 }
 ```
 
@@ -38,39 +27,27 @@ tofu init
 tofu plan
 ```
 
-To update the source for this module, pass `-upgrade` to `tofu init`:
-
-```bash
-tofu init -upgrade
-```
-
 ## Inputs
 
-[//]: # (TODO: Replace the following with your own inputs)
-
-| Name        | Description                                   | Type     | Default | Required |
-|-------------|-----------------------------------------------|----------|---------|----------|
-| project     | Name of the project.                          | `string` | n/a     | yes      |
-| environment | Environment for the project.                  | `string` | `"dev"` | no       |
-| tags        | Optional tags to be applied to all resources. | `list`   | `[]`    | no       |
+| Name                   | Description                                                                                 | Type     | Default          | Required |
+|------------------------|---------------------------------------------------------------------------------------------|----------|------------------|----------|
+| doppler_workspace_id   | Slug for the Doppler workspace for syncing.                                                 | `string` | n/a              | yes      |
+| kms_key_arns           | ARNs of the KMS keys to allow access to.                                                    | `string` | n/a              | yes      |
+| project                | Project that these resources are supporting.                                                | `string` | n/a              | yes      |
+| doppler_aws_account_id | ID of the Doppler AWS account to authorize.                                                 | `string` | `"299900769157"` | no       |
+| environment            | Environment for the deployment.                                                             | `string` | `"development"`  | no       |
+| service                | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"` | `string` | `null`           | no       |
+| tags                   | Optional tags to be applied to all resources.                                               | `list`   | `[]`             | no       |
 
 ## Outputs
-
-[//]: # (TODO: Replace the following with your own outputs)
 
 | Name     | Description                       | Type     |
 |----------|-----------------------------------|----------|
 | id       | Id of the newly created resource. | `string` |
 
 
-## Contributing
-
-Follow the [contributing guidelines][contributing] to contribute to this
-repository.
-
-[badge-checks]: https://github.com/codeforamerica/tofu-modules-template/actions/workflows/main.yaml/badge.svg
-[badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-template?logo=github&label=Latest%20Release
-[code-checks]: https://github.com/codeforamerica/tofu-modules-template/actions/workflows/main.yaml
-[contributing]: CONTRIBUTING.md
-[latest-release]: https://github.com/codeforamerica/tofu-modules-template/releases/latest
+[badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg
+[badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release
+[code-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml
+[latest-release]: https://github.com/codeforamerica/tofu-modules-aws-doppler/releases/latest
 [tofu-modules]: https://github.com/codeforamerica/tofu-modules
