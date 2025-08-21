@@ -1,9 +1,9 @@
-# Code for America OpenTofu Module Template
+# AWS Doppler Module
 
 [![Main Checks][badge-checks]][code-checks] [![GitHub Release][badge-release]][latest-release]
 
 This module creates and manages the permissions and configuration necessary to
-sync secrets between Doppler and[AWS Secrets Manager][secrets-manager].
+sync secrets between Doppler and [AWS Secrets Manager][secrets-manager].
 
 ## Usage
 
@@ -34,6 +34,7 @@ tofu plan
 | doppler_workspace_id   | Slug for the Doppler workspace for syncing.                                                 | `string` | n/a              | yes      |
 | kms_key_arns           | ARNs of the KMS keys to allow access to.                                                    | `string` | n/a              | yes      |
 | project                | Project that these resources are supporting.                                                | `string` | n/a              | yes      |
+| create_sync            | Whether to create a sync for the Doppler project.                                           | `bool`   | `true`           | no       |
 | doppler_aws_account_id | ID of the Doppler AWS account to authorize.                                                 | `string` | `"299900769157"` | no       |
 | environment            | Environment for the deployment.                                                             | `string` | `"development"`  | no       |
 | service                | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"` | `string` | `null`           | no       |
@@ -41,9 +42,11 @@ tofu plan
 
 ## Outputs
 
-| Name     | Description                       | Type     |
-|----------|-----------------------------------|----------|
-| id       | Id of the newly created resource. | `string` |
+| Name                   | Description                                          | Type     |
+|------------------------|------------------------------------------------------|----------|
+| doppler_integration_id | ID of the Doppler Secrets Manager integration.       | `string` |
+| doppler_sync_id        | ID of the Doppler sync configuration.                | `string` |
+| role_arn               | ARN of the IAM role to assume for accessing secrets. | `string` |
 
 
 [badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg

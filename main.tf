@@ -67,3 +67,16 @@ resource "aws_iam_role_policy_attachments_exclusive" "this" {
   role_name   = aws_iam_role.this.name
   policy_arns = [aws_iam_policy.this.arn]
 }
+
+module "sync" {
+  source = "../modules/sync"
+
+  for_each = var.create_sync ? toset(["this"]) : toset([])
+
+  doppler_project  = var.doppler_project
+  environment      = var.environment
+  environment_slug = var.doppler_environment_slug
+  iam_role_arn     = aws_iam_role.this.arn
+  project          = var.project
+  service          = var.service
+}
