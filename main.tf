@@ -69,7 +69,7 @@ resource "aws_iam_role_policy_attachments_exclusive" "this" {
 }
 
 module "sync" {
-  source = "../modules/sync"
+  source = "./modules/sync"
 
   for_each = var.create_sync ? toset(["this"]) : toset([])
 
