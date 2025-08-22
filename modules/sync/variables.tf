@@ -32,6 +32,12 @@ variable "project" {
   description = "Project that these resources are supporting."
 }
 
+variable "region" {
+  type        = string
+  description = "AWS region where the secrets reside."
+  default     = "us-east-1"
+}
+
 variable "service" {
   type        = string
   description = "Optional service that these resources are supporting. Example: 'api', 'web', 'worker'"

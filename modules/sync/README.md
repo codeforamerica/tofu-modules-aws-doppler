@@ -35,6 +35,7 @@ tofu plan
 | environment      | Environment for the deployment.                                                                | `string` | `"development"` | no       |
 | environment_slug | Doppler environment slug. If not provided, the slug will be derived from the environment.      | `string` | `null`          | no       |
 | program          | Program the application belongs to.                                                            | `string` | `null`          | no       |
+| region           | AWS region where the secrets reside.                                                           | `string` | `"us-east-1"`   | no       |
 | service          | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"`    | `string` | `null`          | no       |
 
 ## Outputs
@@ -43,7 +44,6 @@ tofu plan
 |----------------|------------------------------------------------|----------|
 | integration_id | ID of the Doppler Secrets Manager integration. | `string` |
 | sync_id        | ID of the Doppler sync configuration.          | `string` |
-
 
 [badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg
 [badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release

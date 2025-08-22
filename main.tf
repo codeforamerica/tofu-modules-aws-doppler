@@ -79,5 +79,6 @@ module "sync" {
   iam_role_arn     = aws_iam_role.this.arn
   program          = var.program
   project          = var.project
+  region           = data.aws_region.current.name
   service          = var.service
 }

@@ -8,7 +8,7 @@ resource "doppler_secrets_sync_aws_secrets_manager" "this" {
   project     = local.project
   config      = coalesce(var.environment_slug, local.environments[var.environment])
 
-  region               = data.aws_region.current.name
+  region               = var.region
   path                 = local.path
   delete_behavior      = "leave_in_target"
   path_behavior        = "none"
