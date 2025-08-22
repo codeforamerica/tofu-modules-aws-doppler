@@ -77,6 +77,7 @@ module "sync" {
   environment      = var.environment
   environment_slug = var.doppler_environment_slug
   iam_role_arn     = aws_iam_role.this.arn
+  program          = var.program
   project          = var.project
   service          = var.service
 }

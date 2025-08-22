@@ -27,14 +27,15 @@ tofu plan
 
 ## Inputs
 
-| Name             | Description                                                                                 | Type     | Default         | Required |
-|------------------|---------------------------------------------------------------------------------------------|----------|-----------------|----------|
-| iam_role_arn     | ARN of the IAM role that Doppler will assume to access AWS Secrets Manager.                 | `string` | n/a             | yes      |
-| project          | Project that these resources are supporting.                                                | `string` | n/a             | yes      |
-| doppler_project  | Doppler project name. If not provided, will be derived from the project and service.        | `string` | `null`          | no       |
-| environment      | Environment for the deployment.                                                             | `string` | `"development"` | no       |
-| environment_slug | Doppler environment slug. If not provided, the slug will be derived from the environment.   | `string` | `null`          | no       |
-| service          | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"` | `string` | `null`          | no       |
+| Name             | Description                                                                                    | Type     | Default         | Required |
+|------------------|------------------------------------------------------------------------------------------------|----------|-----------------|----------|
+| iam_role_arn     | ARN of the IAM role that Doppler will assume to access AWS Secrets Manager.                    | `string` | n/a             | yes      |
+| project          | Project that these resources are supporting.                                                   | `string` | n/a             | yes      |
+| doppler_project  | Doppler project name. If not provided, will be derived from the program, project, and service. | `string` | `null`          | no       |
+| environment      | Environment for the deployment.                                                                | `string` | `"development"` | no       |
+| environment_slug | Doppler environment slug. If not provided, the slug will be derived from the environment.      | `string` | `null`          | no       |
+| program          | Program the application belongs to.                                                            | `string` | `null`          | no       |
+| service          | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"`    | `string` | `null`          | no       |
 
 ## Outputs
 

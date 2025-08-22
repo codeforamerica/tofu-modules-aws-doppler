@@ -37,6 +37,7 @@ tofu plan
 | create_sync            | Whether to create a sync for the Doppler project.                                           | `bool`   | `true`           | no       |
 | doppler_aws_account_id | ID of the Doppler AWS account to authorize.                                                 | `string` | `"299900769157"` | no       |
 | environment            | Environment for the deployment.                                                             | `string` | `"development"`  | no       |
+| program                | Program the application belongs to.                                                         | `string` | `null`           | no       |
 | service                | Optional service that these resources are supporting. Example: `"api"`, `"web"`, `"worker"` | `string` | `null`           | no       |
 | tags                   | Optional tags to be applied to all resources.                                               | `list`   | `[]`             | no       |
 

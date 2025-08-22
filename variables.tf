@@ -38,6 +38,12 @@ variable "kms_key_arns" {
   description = "List of KMS key ARNs to allow access to."
 }
 
+variable "program" {
+  type        = string
+  description = "Program the application belongs to."
+  default     = null
+}
+
 variable "project" {
   type        = string
   description = "Project that these resources are supporting."

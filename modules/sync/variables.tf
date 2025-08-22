@@ -1,6 +1,6 @@
 variable "doppler_project" {
   type        = string
-  description = "Doppler project name. If not provided, will be derived from the project and service."
+  description = "Doppler project name. If not provided, will be derived from the program, project, and service."
   default     = null
 }
 
@@ -19,6 +19,12 @@ variable "environment_slug" {
 variable "iam_role_arn" {
   type        = string
   description = "ARN of the IAM role that Doppler will assume to access AWS Secrets Manager."
+}
+
+variable "program" {
+  type        = string
+  description = "Program the application belongs to."
+  default     = null
 }
 
 variable "project" {
