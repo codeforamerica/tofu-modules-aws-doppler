@@ -49,9 +49,18 @@ tofu plan
 | doppler_sync_id        | ID of the Doppler sync configuration.                | `string` |
 | role_arn               | ARN of the IAM role to assume for accessing secrets. | `string` |
 
+## Submodules
+
+This module includes the following submodules that can be used independently, if
+desired:
+
+| Name   | Description                                         |
+|--------|-----------------------------------------------------|
+| [sync] | Creates and manages the Doppler sync configuration. |
 
 [badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg
 [badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release
 [code-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml
 [latest-release]: https://github.com/codeforamerica/tofu-modules-aws-doppler/releases/latest
+[sync]: modules/sync/README.md
 [tofu-modules]: https://github.com/codeforamerica/tofu-modules
