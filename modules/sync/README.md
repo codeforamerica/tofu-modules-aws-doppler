@@ -10,7 +10,7 @@ to match your desired configuration. For example:
 
 ```hcl
 module "doppler_sync" {
-  source = "github.com/codeforamerica/tofu-modules-aws-doppler?ref=1.0.0"
+  source = "github.com/codeforamerica/tofu-modules-aws-doppler//modules/sync?ref=1.0.0"
 
   project = "my-project"
   environment = "development"
@@ -44,9 +44,3 @@ tofu plan
 |----------------|------------------------------------------------|----------|
 | integration_id | ID of the Doppler Secrets Manager integration. | `string` |
 | sync_id        | ID of the Doppler sync configuration.          | `string` |
-
-[badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg
-[badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release
-[code-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml
-[latest-release]: https://github.com/codeforamerica/tofu-modules-aws-doppler/releases/latest
-[tofu-modules]: https://github.com/codeforamerica/tofu-modules

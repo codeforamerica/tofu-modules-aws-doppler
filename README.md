@@ -62,5 +62,5 @@ desired:
 [badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release
 [code-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml
 [latest-release]: https://github.com/codeforamerica/tofu-modules-aws-doppler/releases/latest
+[secrets-manager]: https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
 [sync]: modules/sync/README.md
-[tofu-modules]: https://github.com/codeforamerica/tofu-modules
