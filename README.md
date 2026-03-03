@@ -1,6 +1,6 @@
 # AWS Doppler Module
 
-[![Main Checks][badge-checks]][code-checks] [![GitHub Release][badge-release]][latest-release]
+[![GitHub Release][badge-release]][latest-release]
 
 This module creates and manages the permissions and configuration necessary to
 sync secrets between Doppler and [AWS Secrets Manager][secrets-manager].
@@ -58,9 +58,7 @@ desired:
 |--------|-----------------------------------------------------|
 | [sync] | Creates and manages the Doppler sync configuration. |
 
-[badge-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml/badge.svg
 [badge-release]: https://img.shields.io/github/v/release/codeforamerica/tofu-modules-aws-doppler?logo=github&label=Latest%20Release
-[code-checks]: https://github.com/codeforamerica/tofu-modules-aws-doppler/actions/workflows/main.yaml
 [latest-release]: https://github.com/codeforamerica/tofu-modules-aws-doppler/releases/latest
 [secrets-manager]: https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html
 [sync]: modules/sync/README.md
