@@ -12,13 +12,19 @@ variable "doppler_aws_account_id" {
 
 variable "doppler_environment_slug" {
   type        = string
-  description = "Doppler environment slug. If not provided, the slug will be derived from the environment."
+  description = <<EOT
+    Doppler environment slug. If not provided, the slug will be derived from the
+    environment.
+    EOT
   default     = null
 }
 
 variable "doppler_project" {
   type        = string
-  description = "Doppler project name. If not provided, will be derived from the project and service."
+  description = <<EOT
+    Doppler project name. If not provided, will be derived from the program,
+    project, and service.
+    EOT
   default     = null
 }
 
@@ -51,7 +57,10 @@ variable "project" {
 
 variable "service" {
   type        = string
-  description = "Optional service that these resources are supporting. Example: 'api', 'web', 'worker'"
+  description = <<EOT
+    Optional service that these resources are supporting. Example: 'api', 'web',
+    'worker'.
+    EOT
   default     = null
 }
 

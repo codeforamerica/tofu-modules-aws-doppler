@@ -10,7 +10,7 @@ to match your desired configuration. For example:
 
 ```hcl
 module "doppler_sync" {
-  source = "github.com/codeforamerica/tofu-modules-aws-doppler//modules/sync?ref=1.0.0"
+  source = "github.com/codeforamerica/tofu-modules-aws-doppler//modules/sync?ref=1.1.0"
 
   project = "my-project"
   environment = "development"

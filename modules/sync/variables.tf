@@ -1,6 +1,9 @@
 variable "doppler_project" {
   type        = string
-  description = "Doppler project name. If not provided, will be derived from the program, project, and service."
+  description = <<EOT
+    Doppler project name. If not provided, will be derived from the program,
+    project, and service.
+    EOT
   default     = null
 }
 
@@ -12,7 +15,10 @@ variable "environment" {
 
 variable "environment_slug" {
   type        = string
-  description = "Doppler environment slug. If not provided, the slug will be derived from the environment."
+  description = <<EOT
+    Doppler environment slug. If not provided, the slug will be derived from the
+    environment.
+    EOT
   default     = null
 }
 
