@@ -1,66 +1,24 @@
 resource "aws_iam_policy" "this" {
   name        = local.name
   description = "Policy to allow Doppler to access secrets in AWS Secrets Manager."
+  tags        = var.tags
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid    = "AllowSecretsAccess"
-        Effect = "Allow"
-        Action = [
-          "secretsmanager:GetSecretValue",
-          "secretsmanager:DescribeSecret",
-          "secretsmanager:PutSecretValue",
-          "secretsmanager:CreateSecret",
-          "secretsmanager:DeleteSecret",
-          "secretsmanager:TagResource",
-          "secretsmanager:UpdateSecret"
-        ]
-        Resource = "*"
-      },
-      {
-        Sid    = "AllowKMSAccess"
-        Effect = "Allow"
-        Action = [
-          "kms:DescribeKey",
-          "kms:ListAliases",
-          "kms:ListKeys",
-          "kms:Encrypt",
-          "kms:Decrypt",
-          "kms:ReEncrypt*",
-          "kms:GenerateDataKey*"
-        ]
-        Resource = var.kms_key_arns
-      },
-    ]
-  })
-
-  tags = var.tags
+  policy = jsonencode(yamldecode(templatefile("${path.module}/templates/iam-policy.yaml.tftpl", {
+    kms_key_arns = var.kms_key_arns
+  })))
 }
 
 resource "aws_iam_role" "this" {
-  name = local.name
+  depends_on = [aws_iam_policy.this]
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = "sts:AssumeRole"
-        Principal = {
-          AWS = "arn:aws:iam::${var.doppler_aws_account_id}:root"
-        },
-        Condition = {
-          StringEquals = {
-            "sts:ExternalId" = var.doppler_workspace_id
-          }
-        }
-      },
-    ]
-  })
+  name                  = local.name
+  force_detach_policies = true
+  tags                  = var.tags
 
-  tags = var.tags
+  assume_role_policy = jsonencode(yamldecode(templatefile("${path.module}/templates/trust-policy.yaml.tftpl", {
+    doppler_account_id   = var.doppler_aws_account_id
+    doppler_workspace_id = var.doppler_workspace_id
+  })))
 }
 
 resource "aws_iam_role_policy_attachments_exclusive" "this" {
