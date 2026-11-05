@@ -1,0 +1,27 @@
+Version: "2012-10-17"
+Statement:
+  - Sid: AllowSecretsAccess
+    Effect: Allow
+    Action:
+      - secretsmanager:CreateSecret
+      - secretsmanager:DeleteSecret
+      - secretsmanager:DescribeSecret
+      - secretsmanager:GetSecretValue
+      - secretsmanager:PutSecretValue
+      - secretsmanager:TagResource
+      - secretsmanager:UpdateSecret
+    Resource: "*"
+  - Sid: AllowKMSAccess
+    Effect: Allow
+    Action:
+      - kms:Decrypt
+      - kms:DescribeKey
+      - kms:Encrypt
+      - kms:GenerateDataKey*
+      - kms:ListAliases
+      - kms:ListKeys
+      - kms:ReEncrypt*
+    Resource:
+      %{ for arn in kms_key_arns ~}
+      - "${arn}"
+      %{ endfor }
